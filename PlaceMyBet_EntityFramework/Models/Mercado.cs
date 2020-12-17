@@ -14,7 +14,7 @@ namespace PlaceMyBet_EntityFramework.Models
         {
             MercadoId = mercadoId;
             Tipo = tipo;
-            CuotaOver = cuotaOver;
+            CuotaOver = cuotaOver; 
             CuotaUnder = cuotaUnder;
             DineroOver = dineroOver;
             DineroUnder = dineroUnder;
@@ -32,4 +32,18 @@ namespace PlaceMyBet_EntityFramework.Models
 
     }
 
+    public class MercadoDTO
+    {
+        public MercadoDTO(double tipo, double cuotaOver, double cuotaUnder)
+        {
+            Tipo = tipo;
+            CuotaOver = cuotaOver;
+            CuotaUnder = cuotaUnder;
+        }
+
+        public double Tipo { get; set; }
+        public double CuotaOver { get; set; }
+        public double CuotaUnder { get; set; }
+
+    }
 }

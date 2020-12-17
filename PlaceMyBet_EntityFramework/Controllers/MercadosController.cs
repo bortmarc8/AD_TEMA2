@@ -24,8 +24,10 @@ namespace PlaceMyBet_EntityFramework.Controllers
         }
 
         // POST: api/Mercsdos
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Mercado mercado)
         {
+            MercadosRepository repo = new MercadosRepository();
+            repo.Save(mercado);
         }
 
         // PUT: api/Mercsdos/5

@@ -11,7 +11,7 @@ namespace PlaceMyBet_EntityFramework.Controllers
     public class EventosController : ApiController
     {
         // GET: api/Eventos
-        public List<Evento> Get()
+        public List<EventoDTO> Get()
         {
             EventosRepository repo = new EventosRepository();
             return repo.Retrieve();
@@ -31,13 +31,17 @@ namespace PlaceMyBet_EntityFramework.Controllers
         }
 
         // PUT: api/Eventos/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody]Evento evento)
         {
+            EventosRepository repo = new EventosRepository();
+            repo.Update(id, evento);
         }
 
         // DELETE: api/Eventos/5
         public void Delete(int id)
         {
+            EventosRepository repo = new EventosRepository();
+            repo.Remove(id);
         }
     }
 }

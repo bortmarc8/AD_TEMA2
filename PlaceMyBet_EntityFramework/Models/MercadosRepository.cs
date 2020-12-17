@@ -1,6 +1,7 @@
 ﻿using Microsoft.Ajax.Utilities;
 using System;
 using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Web;
 
@@ -8,14 +9,18 @@ namespace PlaceMyBet_EntityFramework.Models
 {
     public class MercadosRepository
     {
-        internal List<Mercado> Retrieve()
+        internal List<MercadoDTO> Retrieve()
         { 
-            List<Mercado> mercados = new List<Mercado>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                mercados = context.Mercados.ToList();
+                List<MercadoDTO> mercados = context
+                    .Mercados
+                    .Select(p => ToDTO(p))
+                    .ToList();
+
+                return mercados;
             }
-            return mercados;
+            
         }
 
         internal Mercado Retrieve(int id)
@@ -24,10 +29,23 @@ namespace PlaceMyBet_EntityFramework.Models
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
                 mercado = context.Mercados
+                    .Include(p => p.Evento)
                     .Where(s => s.MercadoId == id)
                     .FirstOrDefault();
             }
             return mercado;
+        }
+
+        internal void Save(Mercado mercado)
+        {
+            PlaceMyBetContext context = new PlaceMyBetContext();
+            context.Mercados.Add(mercado);
+            context.SaveChanges();
+        }
+
+        public MercadoDTO ToDTO(Mercado e)
+        {
+            return new MercadoDTO(e.Tipo, e.CuotaOver, e.CuotaUnder);
         }
     }
 }

@@ -32,4 +32,22 @@ namespace PlaceMyBet_EntityFramework.Models
 
     }
 
+    public class ApuestaDTO 
+    {
+        public ApuestaDTO(string usuarioId, int eventoId, bool tipoApuesta, double cuota, double dinero)
+        {
+            UsuarioId = usuarioId;
+            EventoId = eventoId;
+            TipoApuesta = tipoApuesta;
+            Cuota = cuota;
+            Dinero = dinero;
+        }
+
+        public string UsuarioId { get; set; }
+        public int EventoId { get; set; }
+        public bool TipoApuesta { get; set; }
+        public double Cuota { get; set; }
+        public double Dinero { get; set; }
+    }
+
 }
