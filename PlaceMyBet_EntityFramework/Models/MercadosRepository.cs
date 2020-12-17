@@ -43,7 +43,7 @@ namespace PlaceMyBet_EntityFramework.Models
             context.SaveChanges();
         }
 
-        public MercadoDTO ToDTO(Mercado e)
+        internal static MercadoDTO ToDTO(Mercado e)
         {
             return new MercadoDTO(e.Tipo, e.CuotaOver, e.CuotaUnder);
         }

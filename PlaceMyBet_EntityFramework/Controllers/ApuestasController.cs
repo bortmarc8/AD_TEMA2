@@ -11,7 +11,7 @@ namespace PlaceMyBet_EntityFramework.Controllers
     public class ApuestasController : ApiController
     {
         // GET: api/Apuestas
-        public List<Apuesta> Get()
+        public List<ApuestaDTO> Get()
         {
             ApuestasRepository repo = new ApuestasRepository();
             return repo.Retrieve();
@@ -25,10 +25,11 @@ namespace PlaceMyBet_EntityFramework.Controllers
         }
 
         // POST: api/Apuestas
-        [Authorize]
+        //[Authorize]
         public void Post([FromBody]Apuesta apuesta)
         {
-
+            ApuestasRepository repo = new ApuestasRepository();
+            repo.Save(apuesta);
         }
 
         // PUT: api/Apuestas/5

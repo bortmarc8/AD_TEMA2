@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Web;
+using System.Diagnostics;
 
 namespace PlaceMyBet_EntityFramework.Models
 {
@@ -20,6 +21,20 @@ namespace PlaceMyBet_EntityFramework.Models
                 return eventos;
             }
             
+        }
+
+        internal Evento Retrieve(int id)
+        {
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                Evento evento = context
+                    .Eventos
+                    .Where(s => s.EventoId == id)
+                    .FirstOrDefault();
+
+                return evento;
+            }
+
         }
 
         internal void Save(Evento evento)
@@ -41,7 +56,7 @@ namespace PlaceMyBet_EntityFramework.Models
             evento.Goles = e.Goles;
             evento.Fecha = e.Fecha;
 
-            Save(evento);
+            context.SaveChanges();
         }
 
         internal void Remove(int id)
@@ -56,7 +71,7 @@ namespace PlaceMyBet_EntityFramework.Models
 
         }
 
-        internal EventoDTO ToDTO(Evento e)
+        internal static EventoDTO ToDTO(Evento e)
         {
             return new EventoDTO(e.EquipoLocal, e.EquipoVisitante);
         }

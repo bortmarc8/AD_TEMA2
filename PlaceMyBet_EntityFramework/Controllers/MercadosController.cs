@@ -11,7 +11,7 @@ namespace PlaceMyBet_EntityFramework.Controllers
     public class MercadosController : ApiController
     {
         // GET: api/Mercsdos
-        public List<Mercado> Get()
+        public List<MercadoDTO> Get()
         {
             return new MercadosRepository().Retrieve();
         }

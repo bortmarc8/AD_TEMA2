@@ -18,9 +18,10 @@ namespace PlaceMyBet_EntityFramework.Controllers
         }
 
         // GET: api/Eventos/5
-        public void Get(int id)
+        public Evento Get(int id)
         {
-
+            EventosRepository repo = new EventosRepository();
+            return repo.Retrieve(id);
         }
 
         // POST: api/Eventos

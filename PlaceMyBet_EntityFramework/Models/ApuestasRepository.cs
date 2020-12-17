@@ -5,22 +5,25 @@ using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Linq;
 using System.Web;
+using System.Globalization;
+using System.Web.WebPages;
 
 namespace PlaceMyBet_EntityFramework.Models
 {
     public class ApuestasRepository
     {
-        internal List<Apuesta> Retrieve()
+        internal List<ApuestaDTO> Retrieve()
         { 
-            List<Apuesta> apuestas = new List<Apuesta>();
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                apuestas = context.Apuestas
-                    .Include(p => p.Mercado)
-                    .Include(p => p.Usuario)
+                List<ApuestaDTO> apuestas = context
+                    .Apuestas
+                    .Select(p => ToDTO(p))
                     .ToList();
+                return apuestas;
+
             }
-            return apuestas;
+            
         }
 
         internal Apuesta Retrieve(int id)
@@ -30,7 +33,6 @@ namespace PlaceMyBet_EntityFramework.Models
             {
                 apuesta = context.Apuestas
                     .Include(p => p.Mercado)
-                    .Include(p => p.Usuario)
                     .Where(s => s.ApuestaId == id)
                     .FirstOrDefault();
             }
@@ -52,14 +54,26 @@ namespace PlaceMyBet_EntityFramework.Models
                 else
                     mercado.DineroUnder += apuesta.Dinero;
 
+                if (apuesta.Fecha.ToString() == "01/01/0001 0:00:00")
+                    apuesta.Fecha = DateTime.Now; 
+
                 mercado.CuotaOver = 1 / (mercado.DineroOver / (mercado.DineroOver + mercado.DineroUnder)) * 0.95;
                 mercado.CuotaUnder = 1 / (mercado.DineroUnder / (mercado.DineroOver + mercado.DineroUnder)) * 0.95;
 
+                if (apuesta.TipoApuesta)
+                    apuesta.Cuota = mercado.CuotaOver;
+                else
+                    apuesta.Cuota = mercado.CuotaUnder;
+
+                context.Apuestas.Add(apuesta);;
+
                 context.SaveChanges();
+
+
             }
         }
 
-        public ApuestaDTO ToDTO(Apuesta e)
+        internal static ApuestaDTO ToDTO(Apuesta e)
         {
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
