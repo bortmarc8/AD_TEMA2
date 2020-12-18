@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "7c494ddd-bbfa-4b30-9ac3-8a7a304bb74e",
+		"name": "Tema 2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AE5",
+			"item": [
+				{
+					"name": "Eventos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/Eventos",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Eventos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mercados id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/Mercados/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Mercados",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mercados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/Mercados/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Mercados",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apuestas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/Apuestas",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Apuestas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apuestas id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/Apuestas/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Apuestas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post evento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"EventoId\": 2,\r\n        \"EquipoLocal\": \"Valencia\",\r\n        \"EquipoVisitante\": \"Madrid\",\r\n        \"Goles\": 5,\r\n        \"Fecha\": \"2020-09-27T00:00:00\",\r\n        \"Mercados\": null\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/Eventos/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Eventos",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AE6",
+			"item": [
+				{
+					"name": "Post Mercado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"MercadoId\": 4,\r\n    \"Tipo\": 1.5,\r\n    \"CuotaOver\": 1.95,\r\n    \"CuotaUnder\": 1.95,\r\n    \"DineroOver\": 0,\r\n    \"DineroUnder\": 0,\r\n    \"EventoId\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/Mercados/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Mercados",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Apuesta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Dinero\": 100.0,\r\n    \"TipoApuesta\": false,\r\n    \"MercadoId\": 1,\r\n    \"UsuarioId\": \"maboto01@floridauniversitaria.es\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/Apuestas/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Apuestas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Mercados + evento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/Mercados/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Mercados",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Apuestas + mercado",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/Apuestas/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Apuestas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get mercados DTO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/Mercados",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Mercados"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Apuestas DTO",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:44342/api/Apuestas/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Apuestas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Evento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"EventoId\": 1,\r\n    \"EquipoLocal\": \"Valencia\",\r\n    \"EquipoVisitante\": \"Betis\",\r\n    \"Goles\": 2,\r\n    \"Fecha\": \"2020-09-27T00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/Eventos/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Eventos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Evento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"EventoId\": 1,\r\n    \"EquipoLocal\": \"Valencia\",\r\n    \"EquipoVisitante\": \"Betis\",\r\n    \"Goles\": 2,\r\n    \"Fecha\": \"2020-09-27T00:00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:44342/api/Eventos/2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "44342",
+							"path": [
+								"api",
+								"Eventos",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
