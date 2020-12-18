@@ -46,4 +46,19 @@ namespace PlaceMyBet_EntityFramework.Models
         public double CuotaUnder { get; set; }
 
     }
+
+    public class MercadoDTOExamen
+    {   
+        public MercadoDTOExamen(int mercadoId, double cuotaOver, double cuotaUnder)
+        {
+            MercadoId = mercadoId;
+            CuotaOver = cuotaOver;
+            CuotaUnder = cuotaUnder;
+        }
+
+        public double MercadoId { get; set; }
+        public double CuotaOver { get; set; }
+        public double CuotaUnder { get; set; }
+
+    }
 }

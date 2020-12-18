@@ -296,6 +296,7 @@
     <Compile Include="Controllers\ApuestasController.cs" />
     <Compile Include="Controllers\BancosController.cs" />
     <Compile Include="Controllers\EventosController.cs" />
+    <Compile Include="Controllers\EventosExamenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MercadosController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -396,6 +397,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\ApuestasRepository\" />
+    <Folder Include="Views\EventosExamen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

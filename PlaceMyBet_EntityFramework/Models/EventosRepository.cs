@@ -10,16 +10,8 @@ namespace PlaceMyBet_EntityFramework.Models
 {
     public class EventosRepository
     {
-        internal List<EventoDTO> Retrieve()
+        internal void Retrieve()
         { 
-            using (PlaceMyBetContext context = new PlaceMyBetContext())
-            {
-                List<EventoDTO> eventos = context
-                    .Eventos
-                    .Select(p => ToDTO(p))
-                    .ToList();
-                return eventos;
-            }
             
         }
 
@@ -33,6 +25,39 @@ namespace PlaceMyBet_EntityFramework.Models
                     .FirstOrDefault();
 
                 return evento;
+            }
+
+        }
+
+        internal List<EventoDTOExamen> Retrieve(string val)
+        {
+            using (PlaceMyBetContext context = new PlaceMyBetContext())
+            {
+                List<Evento> eventoLocal = context
+                    .Eventos
+                    .Where(s => s.EquipoLocal == val)
+                    .Include(p => p.Mercados)
+                    .ToList();
+
+                List<Evento> eventoVisitante = context
+                    .Eventos
+                    .Where(s => s.EquipoVisitante == val)
+                    .Include(p => p.Mercados)
+                    .ToList();
+
+                foreach (var item in eventoVisitante)
+                {
+                    item.EquipoVisitante = item.EquipoLocal;
+                    eventoLocal.Add(item);
+                }
+
+                List<EventoDTOExamen> eventoFinal = new List<EventoDTOExamen>();
+                foreach (var item in eventoLocal)
+                {
+                    eventoFinal.Add(new EventoDTOExamen(item.EquipoVisitante, ToDTO(item.Mercados)));
+                }
+
+                return eventoFinal;
             }
 
         }
@@ -75,9 +100,20 @@ namespace PlaceMyBet_EntityFramework.Models
 
         }
 
-        internal static EventoDTO ToDTO(Evento e)
+        internal static EventoDTOExamen ToDTO(Evento e)
         {
-            return new EventoDTO(e.EquipoLocal, e.EquipoVisitante);
+            return new EventoDTOExamen(e.EquipoLocal, ToDTO(e.Mercados));
+        }
+
+        internal static List<MercadoDTOExamen> ToDTO(List<Mercado> e)
+        {
+            List<MercadoDTOExamen> lista = new List<MercadoDTOExamen>();
+
+            foreach (var item in e)
+            {
+                lista.Add(new MercadoDTOExamen(item.MercadoId, item.CuotaOver, item.CuotaUnder));
+            }
+            return lista;
         }
     }
 }

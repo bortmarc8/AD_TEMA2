@@ -38,4 +38,16 @@ namespace PlaceMyBet_EntityFramework.Models
         public string EquipoLocal { get; set; }
         public string EquipoVisitante { get; set; }
     }
+
+    public class EventoDTOExamen
+    {
+        public EventoDTOExamen(string equipoRival, List<MercadoDTOExamen> mercados)
+        {
+            EquipoRival = equipoRival;
+            Mercados = mercados;
+        }
+
+        public string EquipoRival { get; set; }
+        public List<MercadoDTOExamen> Mercados { get; set; }
+    }
 }

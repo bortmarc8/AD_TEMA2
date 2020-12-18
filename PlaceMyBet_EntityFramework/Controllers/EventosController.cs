@@ -11,10 +11,9 @@ namespace PlaceMyBet_EntityFramework.Controllers
     public class EventosController : ApiController
     {
         // GET: api/Eventos
-        public List<EventoDTO> Get()
+        public void Get()
         {
-            EventosRepository repo = new EventosRepository();
-            return repo.Retrieve();
+
         }
 
         // GET: api/Eventos/5
