@@ -35,27 +35,23 @@ namespace PlaceMyBet_EntityFramework.Models
             {
                 List<Evento> eventoLocal = context
                     .Eventos
-                    .Where(s => s.EquipoLocal == val)
-                    .Include(p => p.Mercados)
+                    .Where(s => s.eq_local == val)
+                    .Include(p => p.info_mercado)
                     .ToList();
 
                 List<Evento> eventoVisitante = context
                     .Eventos
-                    .Where(s => s.EquipoVisitante == val)
-                    .Include(p => p.Mercados)
+                    .Where(s => s.eq_visitante == val)
+                    .Include(p => p.info_mercado)
                     .ToList();
 
                 foreach (var item in eventoVisitante)
                 {
-                    item.EquipoVisitante = item.EquipoLocal;
+                    item.eq_visitante = item.eq_local;
                     eventoLocal.Add(item);
                 }
 
                 List<EventoDTOExamen> eventoFinal = new List<EventoDTOExamen>();
-                foreach (var item in eventoLocal)
-                {
-                    eventoFinal.Add(new EventoDTOExamen(item.EquipoVisitante, ToDTO(item.Mercados)));
-                }
 
                 return eventoFinal;
             }
@@ -70,6 +66,8 @@ namespace PlaceMyBet_EntityFramework.Models
                 evento.Fecha = DateTime.Now;
 
             context.Eventos.Add(evento);
+            context.Mercados.Add(evento.info_mercado);
+
             context.SaveChanges();
         }
 
@@ -80,8 +78,8 @@ namespace PlaceMyBet_EntityFramework.Models
                     .Where(s => s.EventoId == id)
                     .FirstOrDefault();
 
-            evento.EquipoLocal = e.EquipoLocal;
-            evento.EquipoVisitante = e.EquipoVisitante;
+            evento.eq_local = e.eq_local;
+            evento.eq_visitante = e.eq_visitante;
             evento.Goles = e.Goles;
             evento.Fecha = e.Fecha;
 
@@ -102,7 +100,7 @@ namespace PlaceMyBet_EntityFramework.Models
 
         internal static EventoDTOExamen ToDTO(Evento e)
         {
-            return new EventoDTOExamen(e.EquipoLocal, ToDTO(e.Mercados));
+            return new EventoDTOExamen(e.eq_local, new List<MercadoDTOExamen>());
         }
 
         internal static List<MercadoDTOExamen> ToDTO(List<Mercado> e)
@@ -111,7 +109,7 @@ namespace PlaceMyBet_EntityFramework.Models
 
             foreach (var item in e)
             {
-                lista.Add(new MercadoDTOExamen(item.MercadoId, item.CuotaOver, item.CuotaUnder));
+                lista.Add(new MercadoDTOExamen(item.MercadoId, item.cuota_over, item.cuota_under));
             }
             return lista;
         }

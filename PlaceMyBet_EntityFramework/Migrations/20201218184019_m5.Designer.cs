@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlaceMyBet_EntityFramework.Models;
 
 namespace PlaceMyBet_EntityFramework.Migrations
 {
     [DbContext(typeof(PlaceMyBetContext))]
-    partial class PlaceMyBetContextModelSnapshot : ModelSnapshot
+    [Migration("20201218184019_m5")]
+    partial class m5
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

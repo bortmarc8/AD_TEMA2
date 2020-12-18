@@ -320,6 +320,14 @@
     <Compile Include="Migrations\20201218154313_m4.designer.cs">
       <DependentUpon>20201218154313_m4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20201218184019_m5.cs" />
+    <Compile Include="Migrations\20201218184019_m5.designer.cs">
+      <DependentUpon>20201218184019_m5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20201218184559_m6.cs" />
+    <Compile Include="Migrations\20201218184559_m6.designer.cs">
+      <DependentUpon>20201218184559_m6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\PlaceMyBetContextModelSnapshot.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />

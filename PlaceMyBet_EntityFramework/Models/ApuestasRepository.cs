@@ -50,20 +50,20 @@ namespace PlaceMyBet_EntityFramework.Models
                     .FirstOrDefault();
 
                 if (apuesta.TipoApuesta)
-                    mercado.DineroOver += apuesta.Dinero;
+                    mercado.dinero_over += apuesta.Dinero;
                 else
-                    mercado.DineroUnder += apuesta.Dinero;
+                    mercado.dinero_under     += apuesta.Dinero;
 
                 if (apuesta.Fecha.ToString() == "01/01/0001 0:00:00")
                     apuesta.Fecha = DateTime.Now;
 
-                mercado.CuotaOver = 1 / (mercado.DineroOver / (mercado.DineroOver + mercado.DineroUnder)) * 0.95;
-                mercado.CuotaUnder = 1 / (mercado.DineroUnder / (mercado.DineroOver + mercado.DineroUnder)) * 0.95;
+                mercado.cuota_over = 1 / (mercado.dinero_over / (mercado.dinero_over + mercado.dinero_under)) * 0.95;
+                mercado.cuota_under = 1 / (mercado.dinero_under / (mercado.dinero_under + mercado.dinero_under)) * 0.95;
 
                 if (apuesta.TipoApuesta)
-                    apuesta.Cuota = mercado.CuotaOver;
+                    apuesta.Cuota = mercado.cuota_over;
                 else
-                    apuesta.Cuota = mercado.CuotaUnder;
+                    apuesta.Cuota = mercado.cuota_over;
 
                 context.Apuestas.Add(apuesta); ;
 

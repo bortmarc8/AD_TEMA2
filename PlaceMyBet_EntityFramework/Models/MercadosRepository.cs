@@ -45,7 +45,7 @@ namespace PlaceMyBet_EntityFramework.Models
 
         internal static MercadoDTO ToDTO(Mercado e)
         {
-            return new MercadoDTO(e.Tipo, e.CuotaOver, e.CuotaUnder);
+            return new MercadoDTO(e.tipo, e.dinero_over, e.cuota_under);
         }
     }
 }
