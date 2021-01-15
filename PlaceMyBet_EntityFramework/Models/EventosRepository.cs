@@ -10,13 +10,12 @@ namespace PlaceMyBet_EntityFramework.Models
 {
     public class EventosRepository
     {
-        internal List<EventoDTO> Retrieve()
+        internal List<Evento> Retrieve()
         { 
             using (PlaceMyBetContext context = new PlaceMyBetContext())
             {
-                List<EventoDTO> eventos = context
+                List<Evento> eventos = context
                     .Eventos
-                    .Select(p => ToDTO(p))
                     .ToList();
                 return eventos;
             }

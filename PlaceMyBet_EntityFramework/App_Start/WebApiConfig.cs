@@ -13,9 +13,14 @@ namespace PlaceMyBet_EntityFramework
         public static void Register(HttpConfiguration config)
         {
             // Configuración y servicios de Web API
+            config.EnableCors();
             // Configure Web API para usar solo la autenticación de token de portador.
+            /*
+            
+            -----------------------------------------------------ESTO ESTABA ANTES Y YA NO :<
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            */
 
             // Rutas de Web API
             config.MapHttpAttributeRoutes();

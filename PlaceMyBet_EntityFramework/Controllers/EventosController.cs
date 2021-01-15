@@ -4,14 +4,16 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using PlaceMyBet_EntityFramework.Models;
 
 namespace PlaceMyBet_EntityFramework.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class EventosController : ApiController
     {
         // GET: api/Eventos
-        public List<EventoDTO> Get()
+        public List<Evento> Get()
         {
             EventosRepository repo = new EventosRepository();
             return repo.Retrieve();

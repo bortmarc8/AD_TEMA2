@@ -38,6 +38,10 @@ namespace PlaceMyBet_EntityFramework.Models
             modelBuilder.Entity<Mercado>().HasData(new Mercado(2, 2.5, 1.9, 1.9, 100, 100, 1));
             modelBuilder.Entity<Mercado>().HasData(new Mercado(3, 3.5, 2.85, 1.43, 50, 100, 1));
             modelBuilder.Entity<Usuario>().HasData(new Usuario("maboto01@floridauniversitaria.es", "Mark", "Bort", 19));
+            modelBuilder.Entity<Usuario>().HasData(new Usuario("maboto02@floridauniversitaria.es", "Merk", "Burt", 20));
+            modelBuilder.Entity<Usuario>().HasData(new Usuario("maboto03@floridauniversitaria.es", "Mirk", "Bart", 21));
+            modelBuilder.Entity<Usuario>().HasData(new Usuario("maboto04@floridauniversitaria.es", "Mork", "Bert", 22));
+            modelBuilder.Entity<Usuario>().HasData(new Usuario("maboto05@floridauniversitaria.es", "Murk", "Birt", 23));
             modelBuilder.Entity<Banco>().HasData(new Banco(1, 500, "Santander", 12456, "maboto01@floridauniversitaria.es"));
             modelBuilder.Entity<Apuesta>().HasData(new Apuesta(2, 100, 1.75, true, "2020-12-16".AsDateTime().Date, 1, "maboto01@floridauniversitaria.es"));
 

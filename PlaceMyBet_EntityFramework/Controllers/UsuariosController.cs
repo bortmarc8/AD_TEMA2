@@ -6,23 +6,23 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using PlaceMyBet_EntityFramework.Models;
+using System.Web.Http.Cors;
 
 namespace PlaceMyBet_EntityFramework.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UsuariosController : ApiController
     {
         // GET: api/Users
         public List<Usuario> Get()
         {
-            return new List<Usuario>();
+            return new UsuariosRepository().Retrieve();
         }
 
         // GET: api/Users/5
-        public void Get(int id)
+        public Usuario Get(string id)
         {
-            /*var repo = new UsuariosRepository();
-            Usuario user = repo.Retrieve();
-            return user;*/
+            return new UsuariosRepository().Retrieve(id);
 
         }
 
@@ -37,8 +37,11 @@ namespace PlaceMyBet_EntityFramework.Controllers
         }
 
         // DELETE: api/Users/5
-        public void Delete(int id)
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public void Delete(string id)
         {
+            UsuariosRepository usuario = new UsuariosRepository();
+            usuario.Delete(id);
         }
     }
 }

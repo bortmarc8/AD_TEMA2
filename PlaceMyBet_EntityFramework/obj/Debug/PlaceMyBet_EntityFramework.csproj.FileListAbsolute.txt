@@ -190,3 +190,6 @@ C:\Users\Marc\source\repos\PlaceMyBet_EntityFramework\PlaceMyBet_EntityFramework
 C:\Users\Marc\source\repos\PlaceMyBet_EntityFramework\PlaceMyBet_EntityFramework\obj\Debug\PlaceMyBet_EntityFramework.csproj.CopyComplete
 C:\Users\Marc\source\repos\PlaceMyBet_EntityFramework\PlaceMyBet_EntityFramework\obj\Debug\PlaceMyBet_EntityFramework.dll
 C:\Users\Marc\source\repos\PlaceMyBet_EntityFramework\PlaceMyBet_EntityFramework\obj\Debug\PlaceMyBet_EntityFramework.pdb
+C:\Users\Marc\source\repos\PlaceMyBet_EntityFramework\PlaceMyBet_EntityFramework\bin\System.Web.Cors.dll
+C:\Users\Marc\source\repos\PlaceMyBet_EntityFramework\PlaceMyBet_EntityFramework\bin\System.Web.Http.Cors.dll
+C:\Users\Marc\source\repos\PlaceMyBet_EntityFramework\PlaceMyBet_EntityFramework\bin\System.Web.Http.Cors.xml

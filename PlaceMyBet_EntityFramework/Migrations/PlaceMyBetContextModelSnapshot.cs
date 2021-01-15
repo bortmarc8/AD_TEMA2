@@ -209,6 +209,34 @@ namespace PlaceMyBet_EntityFramework.Migrations
                             Apellidos = "Bort",
                             Edad = 19,
                             Nombre = "Mark"
+                        },
+                        new
+                        {
+                            UsuarioId = "maboto02@floridauniversitaria.es",
+                            Apellidos = "Burt",
+                            Edad = 20,
+                            Nombre = "Merk"
+                        },
+                        new
+                        {
+                            UsuarioId = "maboto03@floridauniversitaria.es",
+                            Apellidos = "Bart",
+                            Edad = 21,
+                            Nombre = "Mirk"
+                        },
+                        new
+                        {
+                            UsuarioId = "maboto04@floridauniversitaria.es",
+                            Apellidos = "Bert",
+                            Edad = 22,
+                            Nombre = "Mork"
+                        },
+                        new
+                        {
+                            UsuarioId = "maboto05@floridauniversitaria.es",
+                            Apellidos = "Birt",
+                            Edad = 23,
+                            Nombre = "Murk"
                         });
                 });
 
